@@ -1,7 +1,7 @@
 "use client"; // Use this directive since we'll use client-side features like useState
 
 import { useState } from "react";
-import { Button } from "./ui/Button";
+import { Button } from "./ui/button";
 import styles from "./Slider.module.css"; // We'll use CSS Modules for styling
 import Image from "next/image";
 
