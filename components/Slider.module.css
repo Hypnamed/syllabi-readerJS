@@ -1,0 +1,46 @@
+.sliderContainer {
+  position: relative;
+  max-width: 800px; /* Adjust as needed */
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+  min-width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  width: auto;
+  height: 1200px; /* Desired height */
+}
+
+.slide img {
+  width: 100%; /* Keeps it responsive within the slide */
+  height: auto; /* Maintains aspect ratio */
+  display: block;
+}
+
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
