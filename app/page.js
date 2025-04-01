@@ -16,8 +16,14 @@ export default async function Home() {
     <main>
       <header>
         <h1 className="flex justify-self-center text-4xl font-bold my-10">
-          Syllabi Reader
+          Syllabi-Reader
         </h1>
+        <Link
+          href="/login"
+          className="flex justify-self-center text-3xl font-semibold my-10 mx-10"
+        >
+          Login
+        </Link>
         <Image
           alt="A person looking to a syllabus"
           className="flex justify-self-center"
@@ -26,7 +32,7 @@ export default async function Home() {
           height={400}
         />
       </header>
-      <div>
+      <section>
         <h1 className="flex justify-self-center text-3xl font-bold my-10">
           Our Mission
         </h1>
@@ -42,13 +48,13 @@ export default async function Home() {
         <Button className="flex justify-self-center my-10 h-20 w-60 text-xl">
           <a href="/calendar">Upload your syllabus</a>
         </Button>
-      </div>
-      <div>
+      </section>
+      <section>
         <h1 className="flex justify-self-center text-3xl font-bold my-10">
           Screenshots from our app
         </h1>
         <Slider />
-      </div>
+      </section>
       <footer>
         <Link
           href="/team"

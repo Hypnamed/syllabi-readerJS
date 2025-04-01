@@ -9,7 +9,7 @@ export default function Calendar() {
           Upload Your Syllabus
         </h1>
       </header>
-      <div className="grid w-full gap-1.5 justify-self-center mb-10">
+      <section className="grid w-full gap-1.5 justify-self-center mb-10">
         <Input
           type="file"
           className="w-48 h-10 justify-self-center text-center bg-primary text-secondary"
@@ -20,7 +20,7 @@ export default function Calendar() {
           width="800"
           height="600"
         ></iframe>
-      </div>
+      </section>
       <footer>
         <Link
           href="/"
