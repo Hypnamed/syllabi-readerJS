@@ -1,17 +1,9 @@
-import { getPosts } from "@/_actions/postAction";
-import Slider from "@/components/Slider";
 import { Button } from "@/components/ui/button";
+import Slider from "@/components/Slider";
 import Image from "next/image";
 import Link from "next/link";
 
 export default async function Home() {
-  const { data, errMsg } = getPosts();
-  console.log(data);
-
-  if (errMsg) {
-    return <h1>{errMsg}</h1>;
-  }
-
   return (
     <main>
       <header>

@@ -5,12 +5,13 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-export default function LoginPage() {
+export default function SignupPage() {
   const [formData, setFormData] = useState({
+    name: "",
     email: "",
     password: "",
   });
-  const [loginError, setLoginError] = useState("");
+  const [signupError, setSignupError] = useState("");
   const router = useRouter();
 
   const onChange = (e) => {
@@ -20,15 +21,15 @@ export default function LoginPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoginError("");
+    setSignupError("");
 
-    if (!formData.email || !formData.password) {
-      setLoginError("Please fill in all fields.");
+    if (!formData.name || !formData.email || !formData.password) {
+      setSignupError("Please fill in all fields.");
       return;
     }
 
     try {
-      const response = await fetch("/api/login", {
+      const response = await fetch("/api/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -40,15 +41,15 @@ export default function LoginPage() {
 
       if (response.ok) {
         alert(data.message);
-        router.push("/calendar");
+        router.push("/login");
       } else {
-        setLoginError(data.message);
+        setSignupError(data.message);
       }
     } catch (error) {
-      console.error("Login failed:", error);
-      setLoginError("An unexpected error occurred.");
+      console.error("Signup failed:", error);
+      setSignupError("An unexpected error occurred.");
     } finally {
-      setFormData({ email: "", password: "" });
+      setFormData({ name: "", email: "", password: "" });
     }
   };
 
@@ -61,12 +62,20 @@ export default function LoginPage() {
       </header>
       <section className="flex-grow">
         <h2 className="flex justify-self-center text-3xl font-semibold my-10">
-          Log in to your account
+          Create an Account
         </h2>
         <form onSubmit={handleSubmit}>
           <Input
             className="flex justify-self-center w-60 mt-10 mb-5 bg-white"
             type="text"
+            placeholder="Name"
+            value={formData.name}
+            name="name"
+            onChange={onChange}
+          />
+          <Input
+            className="flex justify-self-center w-60 mt-5 mb-5 bg-white"
+            type="email"
             placeholder="Email"
             value={formData.email}
             name="email"
@@ -80,24 +89,20 @@ export default function LoginPage() {
             name="password"
             onChange={onChange}
           />
+          {signupError && <p className="text-red-500 mb-5">{signupError}</p>}
           <Button
             className="flex justify-self-center w-60 mt-5 mb-10"
             type="submit"
           >
-            Log in
+            Sign Up
           </Button>
-          <h2 className="flex justify-self-center text-2xl font-semibold my-10">
-            Don&apos;t have an account?{" "}
-            <Link href="/signup" className="text-blue-500 underline">
-              Sign up here
-            </Link>
-          </h2>
-          {loginError && (
-            <p className="flex justify-self-center text-3xl font-semibold my-10 text-red-500 mb-5">
-              {loginError}
-            </p>
-          )}
         </form>
+        <p className="flex justify-center mt-5">
+          Already have an account?{" "}
+          <Link href="/login" className="text-blue-500">
+            Log in
+          </Link>
+        </p>
       </section>
       <footer className="mt-auto">
         <Link

@@ -1,12 +1,12 @@
 "use server";
 
-import postModel from "@/models/postModel";
+import usersModel from "@/models/usersModel";
 import connectDatabase from "@/config/database";
 
-export async function getPosts() {
+export async function getUsers() {
   try {
     await connectDatabase();
-    const data = JSON.parse(JSON.stringify(postModel.find()));
+    const data = JSON.parse(JSON.stringify(usersModel.find()));
 
     return { data };
   } catch (error) {
