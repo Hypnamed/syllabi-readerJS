@@ -14,7 +14,9 @@ export default async function Home() {
           href="/login"
           className="flex justify-self-center text-3xl font-semibold my-10 mx-10"
         >
-          Login
+          <Button className="flex justify-self-center h-10 w-50 text-xl">
+            Login
+          </Button>
         </Link>
         <Image
           alt="A person looking to a syllabus"
@@ -52,7 +54,9 @@ export default async function Home() {
           href="/team"
           className="flex justify-self-center text-3xl font-bold my-10"
         >
-          Meet our team
+          <Button className="flex justify-self-center h-10 w-40 text-xl">
+            Meet our team
+          </Button>
         </Link>
       </footer>
     </main>
