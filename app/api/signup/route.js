@@ -1,5 +1,7 @@
+// app/api/signup/route.js
 import connectDatabase from "@/config/database";
 import Users from "@/models/usersModel";
+import bcrypt from "bcrypt";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
@@ -22,14 +24,18 @@ export async function POST(req) {
       );
     }
 
+    // Hash the password
+    const saltRounds = 10; // You can adjust the number of salt rounds
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+
     const newUser = new Users({
       userName: name,
       userEmail: email,
-      userPassword: password,
+      userPassword: hashedPassword, // Save the hashed password
       userSyllabi: [],
       userClasses: [],
       userDateSigned: new Date().toISOString(),
-      userRole: "User", //
+      userRole: "User",
     });
 
     await newUser.save();

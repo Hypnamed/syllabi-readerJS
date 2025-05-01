@@ -1,10 +1,11 @@
+// app/api/login/route.js
 import connectDatabase from "@/config/database";
 import Users from "@/models/usersModel";
+import bcrypt from "bcrypt";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
   try {
-    await connectDatabase();
     const { email, password } = await req.json();
 
     if (!email || !password) {
@@ -14,6 +15,7 @@ export async function POST(req) {
       );
     }
 
+    await connectDatabase();
     const user = await Users.findOne({ userEmail: email });
 
     if (!user) {
@@ -23,7 +25,10 @@ export async function POST(req) {
       );
     }
 
-    if (user.userPassword === password) {
+    // Compare the entered password with the hashed password
+    const passwordMatch = await bcrypt.compare(password, user.userPassword);
+
+    if (passwordMatch) {
       return NextResponse.json(
         { message: "Login successful!" },
         { status: 200 }

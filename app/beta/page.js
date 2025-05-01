@@ -1,3 +1,4 @@
+import DocxDisplay from "@/components/DOCXDisplay";
 import PdfDisplay from "@/components/PDFDisplay";
 
 export default function Beta() {
@@ -5,6 +6,7 @@ export default function Beta() {
     <main>
       <div>
         <PdfDisplay />
+        <DocxDisplay />
       </div>
     </main>
   );
