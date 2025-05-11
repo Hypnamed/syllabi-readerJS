@@ -5,21 +5,17 @@ import * as pdfjsLib from "pdfjs-dist";
 pdfjsLib.GlobalWorkerOptions.workerSrc = `/pdf.worker.mjs`;
 
 const PdfDisplayEnhanced = () => {
-  const [htmlContent, setHtmlContent] = useState("");
+  const [plainText, setPlainText] = useState(""); // For sending to the API
   const fileInputRef = useRef(null);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-
-  const isLikelyTitle = (item) => {
-    // Implement your logic here based on font size (if available),
-    // position, formatting, etc. This is a heuristic approach.
-    return item.height > 15; // Example: lines with larger height might be titles
-  };
+  const [events, setEvents] = useState([]); // Store extracted events
 
   const handleFileChange = async (event) => {
     const selectedFile = event.target.files[0];
-    setHtmlContent("");
+    setPlainText("");
     setErrorMessage("");
+    setEvents([]);
 
     if (selectedFile) {
       setIsLoading(true);
@@ -30,22 +26,20 @@ const PdfDisplayEnhanced = () => {
           const pdf = await pdfjsLib.getDocument(
             new Uint8Array(e.target.result)
           ).promise;
-          let fullHtml = "";
+          let fullText = "";
 
           for (let i = 1; i <= pdf.numPages; i++) {
             const page = await pdf.getPage(i);
             const textContent = await page.getTextContent();
             textContent.items.forEach((item) => {
               if (item.str) {
-                if (isLikelyTitle(item)) {
-                  fullHtml += `<h2 class="text-xl font-bold mt-4">${item.str}</h2>`;
-                } else {
-                  fullHtml += `<p class="mb-2">${item.str}</p>`;
-                }
+                fullText += `${item.str}\n`; // Collect plain text
               }
             });
           }
-          setHtmlContent(fullHtml);
+
+          setPlainText(fullText); // Store plain text for API
+          await handleExtractDates(fullText); // Automatically extract dates
         } catch (error) {
           setErrorMessage(`Error reading PDF: ${error}`);
         } finally {
@@ -54,6 +48,31 @@ const PdfDisplayEnhanced = () => {
       };
 
       reader.readAsArrayBuffer(selectedFile);
+    }
+  };
+
+  const handleExtractDates = async (text) => {
+    if (!text) {
+      setErrorMessage("No text extracted from the PDF.");
+      return;
+    }
+
+    try {
+      const res = await fetch("/api/extractDates", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ syllabusText: text }),
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        setEvents(data);
+        console.log("📅 Extracted Events:", data);
+      } else {
+        throw new Error(data.error || "Failed to extract events");
+      }
+    } catch (error) {
+      setErrorMessage(`API Error: ${error.message}`);
     }
   };
 
@@ -82,13 +101,19 @@ const PdfDisplayEnhanced = () => {
         <div className="mt-4 text-red-500 font-semibold">{errorMessage}</div>
       )}
 
-      <div className="mt-6 w-full max-w-lg">
-        <h2 className="text-xl font-semibold mb-2">Extracted Content [PDF]:</h2>
-        <div
-          className="bg-gray-100 p-4 rounded-md overflow-auto whitespace-pre-wrap font-mono text-sm"
-          dangerouslySetInnerHTML={{ __html: htmlContent }}
-        />
-      </div>
+      {events.length > 0 && (
+        <div className="mt-6 w-full max-w-lg">
+          <h2 className="text-xl font-semibold mb-2">Extracted Events:</h2>
+          <ul className="list-disc list-inside bg-white rounded p-4 shadow">
+            {events.map((event, index) => (
+              <li key={index}>
+                <strong>{event.title}</strong> — {event.date}
+                {event.description && `: ${event.description}`}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };
