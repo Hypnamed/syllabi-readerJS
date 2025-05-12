@@ -64,6 +64,36 @@ const DocxDisplay = () => {
     }
   };
 
+  console.log("📤 Sending events to ICS API:", events);
+
+  const handleDownloadICS = async () => {
+    try {
+      const res = await fetch("/api/generateICS", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ events }),
+      });
+
+      if (!res.ok) {
+        const errText = await res.text();
+        throw new Error(`ICS API Error: ${errText}`);
+      }
+
+      const blob = await res.blob();
+      const url = window.URL.createObjectURL(blob);
+
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "syllabus-calendar.ics";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    } catch (error) {
+      console.error("🛑 Download error:", error.message);
+      setErrorMessage(error.message);
+    }
+  };
+
   const handleButtonClick = () => fileInputRef.current.click();
 
   return (
@@ -99,6 +129,12 @@ const DocxDisplay = () => {
               </li>
             ))}
           </ul>
+          <button
+            className="mt-4 bg-purple-600 hover:bg-purple-800 text-white font-bold py-2 px-4 rounded"
+            onClick={handleDownloadICS}
+          >
+            Download Calendar (.ics)
+          </button>
         </div>
       )}
     </div>

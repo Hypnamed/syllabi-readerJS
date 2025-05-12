@@ -32,7 +32,7 @@ export async function POST(req) {
           },
           {
             role: "user",
-            content: `From the following syllabus, extract a list of key dates and events (like exams, breaks, and deadlines). Return it in JSON format as an array with each object containing: "title", "date", and "description".\n\n${syllabusText}`,
+            content: `From the following syllabus, extract a list of key academic dates (like exams, holidays, deadlines). Return it as JSON. Each object must contain: - "title" - "date" (format: YYYY-MM-DD) - "description" (optional) Only return valid ISO date strings like "2025-03-03", not natural language. Syllabus text: ${syllabusText}`,
           },
         ],
         temperature: 0.2,
@@ -44,15 +44,14 @@ export async function POST(req) {
 
     // Check if the response contains the expected data
     let text = data.choices?.[0]?.message?.content;
-    if (!text) {
-      console.error("❌ No content from GPT");
-      return NextResponse.json(
-        {
-          error: "OpenAI returned an empty response",
-          raw: data,
-        },
-        { status: 500 }
-      );
+
+    if (!text || text.trim() === "") {
+      console.error("❌ OpenAI returned empty or no content");
+      console.log("🧠 Full OpenAI response:", JSON.stringify(data, null, 2));
+      return res.status(500).json({
+        error: "OpenAI returned an empty response",
+        raw: data,
+      });
     }
 
     // Strip code block markers if present
