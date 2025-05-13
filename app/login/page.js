@@ -40,7 +40,7 @@ export default function LoginPage() {
 
       if (response.ok) {
         alert(data.message);
-        router.push("/calendar");
+        router.push("/upload");
       } else {
         setLoginError(data.message);
       }

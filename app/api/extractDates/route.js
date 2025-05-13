@@ -32,7 +32,11 @@ export async function POST(req) {
           },
           {
             role: "user",
-            content: `From the following syllabus, extract a list of key academic dates (like exams, holidays, deadlines). Return it as JSON. Each object must contain: - "title" - "date" (format: YYYY-MM-DD) - "description" (optional) Only return valid ISO date strings like "2025-03-03", not natural language. Syllabus text: ${syllabusText}`,
+            content: `From the following syllabus, extract a list of key academic dates (like exams, holidays, deadlines, homework, and assignment due dates). Return it as JSON. Each object must contain:
+- "title" (e.g., "Homework 1 Due", "Midterm Exam", "Spring Break")
+- "date" (format: YYYY-MM-DD)
+- "description" (optional, e.g., "Submit via Canvas by 11:59 PM")
+Only return valid ISO date strings like "2025-03-03", not natural language. Syllabus text: ${syllabusText}`,
           },
         ],
         temperature: 0.2,

@@ -40,7 +40,7 @@ export default async function Home() {
           documentation.
         </p>
         <Button className="flex justify-self-center my-10 h-20 w-60 text-xl">
-          <a href="/calendar">Upload your syllabus</a>
+          <a href="/upload">Upload your syllabus</a>
         </Button>
       </section>
       <section>
