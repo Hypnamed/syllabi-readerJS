@@ -4,7 +4,7 @@
 
 ### Color Palette
 
-The first thing we noticed was that our front end of the webpage did not look very good. We did not like the color palette as it look unappealing to the user. We also wanted to learn something new to implement our front end in, so we decided to use 
+The first thing we noticed was that our front end of the webpage did not look very good. We did not like the color palette as it look unappealing to the user. We also wanted to learn something new to implement our front end in, so we decided to use
 
 Researched Appealing Color Palette using this website:
 
@@ -19,12 +19,12 @@ We also used an additional color:
 #DAD7CD
 ```
 
-
 ### Tailwind CSS
 
 We wanted to learn how to make our front end look better by efficiently coding CSS, one of the tools we found was tailwind css. Tailwind uses a set of utility classes, allowing quick development and less writing of code, while maintaining the customization of the webpage.
 
 Tailwind comes with NextJS, which we will talk in depth about later. Here's some example code that we wrote using tailwind:
+
 ```
 <h1 class="flex justify-self-center text-4xl font-bold my-10">
   Syllabi Reader
@@ -38,6 +38,7 @@ Notice, how it makes the code much more concise than if we were to write it in r
 To make out webpage more scalable, we decided to learn NextJS, we tried to switch our webpage from default JavaScript to a NextJS Application.
 
 We imported the important packages from NextJS:
+
 ```
 import Image from "next/image";
 import Link from "next/link";
@@ -56,13 +57,15 @@ export default async function Home() {
 
 ### Vercel App
 
-(Needs to be Done)
+Uploaded our repository (https://github.com/Hypnamed/syllabi-readerJS) to Vercel and let it build our website and keep it live 7/24.
+
+https://syllabi-readerjs.vercel.app/
 
 ## **Database**
 
 ### Setting up a NoSQL Database
 
-Hassan has done SQL in the past, however, he had no idea on how to use NoSQL database management systems, like MongoDB. Therefore, we decided to learn and attempt implementation of a MongoDB database and connect it with our Webpage. 
+Hassan has done SQL in the past, however, he had no idea on how to use NoSQL database management systems, like MongoDB. Therefore, we decided to learn and attempt implementation of a MongoDB database and connect it with our Webpage.
 
 We learned how to set up MongoDB using this link:
 
@@ -83,8 +86,6 @@ const connectDatabase = async () => {
 
 o
 ![alt text](databaseconn.png)
-
-
 
 We have connected and populated the database with tables as following:
 
@@ -121,16 +122,16 @@ We have populated the database with emails, usernames and passwords. We also mad
 
 ### Login/SignUp Page
 
-In order to introduce the initial data in our application, we thought that introduction of a login/sign-up page is going to be very useful for experimental purposes. We can use this data to populate out database, and also execute simple get and post methods between our database and webserver. 
+In order to introduce the initial data in our application, we thought that introduction of a login/sign-up page is going to be very useful for experimental purposes. We can use this data to populate out database, and also execute simple get and post methods between our database and webserver.
 
 We developed a login page, where there are two entry fields. We have login and password. If a user has not already signed up, they will have to put their details in regardless, and then the application will have them sign up. If their data is already in the database, they will be directed to the syllabus reader. If you have already signed up, and your login credentials entry does not match up, the application will not allow you to advance to the PDF Reader.
 
 We used Next JS and the included TailwindCSS, and we also used shadcn/ui
 Here's the link to Shadcn Documentation:
+
 ```
 https://ui.shadcn.com/docs
 ```
-
 
 ```
 import { Button } from "@/components/ui/button"; // Shadcn Component
@@ -161,9 +162,9 @@ iCal Generator
 https://www.npmjs.com/package/ical-generator
 ```
 
-The three most important libraries that we'll use are PDF parse, Compromise, iCal Generator. PDF Parser takes in a range of words or pages, and the parses all that data within the pdf and prints it out allowing it to be manipulated. 
+The three most important libraries that we'll use are PDF parse, Compromise, iCal Generator. PDF Parser takes in a range of words or pages, and the parses all that data within the pdf and prints it out allowing it to be manipulated.
 
-Next, we have Compromise, which classifies the data within the parsed text from the pdf. It will output all the dates and relevant titles from the text. You can also make custom categories like events, so you may be able to extract specific data of our desire. 
+Next, we have Compromise, which classifies the data within the parsed text from the pdf. It will output all the dates and relevant titles from the text. You can also make custom categories like events, so you may be able to extract specific data of our desire.
 
 Next, we have iCal library, this will allow us to input a .ics file and this will populate our google calender. The .ics file will have all the relevant dates/events in it.
 
@@ -181,7 +182,7 @@ From the following syllabus, extract a list of key academic dates (like exams, h
 "date" (format: YYYY-MM-DD)
 "description" (optional, e.g., "Submit via Canvas by 11:59 PM")
 Only return valid ISO date strings like "2025-03-03", not natural language. Syllabus text: ${syllabusText}
-````
+```
 
 Once the dates and deadlines are extracted, we have an ability to edit our dates in case there is a slight error by OpenAI API.
 
