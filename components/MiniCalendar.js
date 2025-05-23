@@ -27,10 +27,12 @@ const MiniCalendar = ({ events }) => {
 
   return (
     <div className="bg-white p-4 rounded shadow mt-6 w-full max-w-xl mx-auto">
-      <Calendar
-        onClickDay={(value) => setSelectedDate(value)}
-        tileContent={tileContent}
-      />
+      <div className="flex justify-center">
+        <Calendar
+          onClickDay={(value) => setSelectedDate(value)}
+          tileContent={tileContent}
+        />
+      </div>
 
       {selectedDate && (
         <div className="mt-4">
