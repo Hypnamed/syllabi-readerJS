@@ -1,63 +1,52 @@
 import { Button } from "@/components/ui/button";
-import Slider from "@/components/Slider";
-import Image from "next/image";
 import Link from "next/link";
 
 export default async function Home() {
   return (
-    <main>
+    <main className="flex flex-col min-h-screen">
       <header>
         <h1 className="flex justify-self-center text-4xl font-bold my-10">
-          Syllabi-Reader
+          <Link href="/">Syllabi-Reader</Link>
         </h1>
-        <Link
-          href="/login"
-          className="flex justify-self-center text-3xl font-semibold my-10 mx-10"
-        >
-          <Button className="flex justify-self-center h-10 w-50 text-xl">
-            Login
-          </Button>
-        </Link>
-        <Image
-          alt="A person looking to a syllabus"
-          className="flex justify-self-center"
-          src="https://www.takestockinchildren.org/wp-content/uploads/2022/08/picture1.jpg"
-          width={600}
-          height={400}
-        />
       </header>
-      <section>
-        <h1 className="flex justify-self-center text-3xl font-bold my-10">
-          Our Mission
-        </h1>
-        <p className="flex justify-self-center break-words mx-10 text-2xl">
-          We are planning to develop SyllabiReader, an app where you can import
-          your syllabi and work/school schedules to your outlook calendar. This
-          app will scan your deadlines, exam dates and prioritize them for you
-          to help you get organized. Based on the event importance, it can set
-          reminders, send notifications through outlook calender and make sure
-          you don&apos;t forget. For further details, please check the
-          documentation.
+      <section className="flex-grow">
+        <h2 className="flex justify-self-center text-3xl font-bold my-10">
+          Simplifying Your Academic Life
+        </h2>
+        <p className="flex justify-self-center break-words text-justify mx-40 text-2xl">
+          Are you tired of sifting through endless syllabi to find important
+          dates? Syllabi-Reader is here to help! Syllabi-Reader extracts key
+          dates from your syllabi and compiles them into a one calendar. No more
+          missing deadlines or important events. Just upload your syllabi, and
+          Syllabi-Reader will do the rest. It&apos;s that simple!
         </p>
-        <Button className="flex justify-self-center my-10 h-20 w-60 text-xl">
+        <Button className="flex justify-self-center my-10 h-16 w-60 text-xl">
           <a href="/upload">Upload your syllabus</a>
         </Button>
-      </section>
-      <section>
-        <h1 className="flex justify-self-center text-3xl font-bold my-10">
-          Screenshots from our app
-        </h1>
-        <Slider />
+        <h2 className="flex justify-self-center text-3xl font-bold my-10">
+          Strech Goals
+        </h2>
+        <p className="flex justify-self-center break-words text-justify mx-40 text-2xl">
+          I&apos;m are working on adding more features to make your academic
+          life even easier. Features like automatic calendar syncing, reminders,
+          and an authentation sysetm to save your syllabi so you can overwrite
+          outdated syllabi and keep track of your classes. I&apos;m also working
+          on improving the date extraction process to make it more accurate and
+          reliable. Stay tuned for more updates!
+        </p>
       </section>
       <footer>
-        <Link
-          href="/team"
-          className="flex justify-self-center text-3xl font-bold my-10"
-        >
-          <Button className="flex justify-self-center h-10 w-40 text-xl">
-            Meet our team
-          </Button>
-        </Link>
+        <div className="flex justify-center text-2xl mt-auto mb-10">
+          Made with ❤️ by{" "}
+          <a
+            href="https://ilkeeren.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 hover:underline ml-1"
+          >
+            Eren
+          </a>{" "}
+        </div>
       </footer>
     </main>
   );

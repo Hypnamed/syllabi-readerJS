@@ -11,51 +11,58 @@ const UploadSyllabi = ({ onEventsExtracted }) => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleFileChange = async (event) => {
-    const file = event.target.files[0];
-    if (!file) return;
+    const files = Array.from(event.target.files);
+    if (!files.length) return;
 
     setIsLoading(true);
     setErrorMessage("");
 
     try {
-      let extractedText = "";
+      let allExtractedEvents = [];
 
-      if (
-        file.type ===
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-      ) {
-        // Handle DOCX
-        const arrayBuffer = await file.arrayBuffer();
-        const result = await mammoth.extractRawText({ arrayBuffer });
-        extractedText = result.value.trim();
-      } else if (file.type === "application/pdf") {
-        // Handle PDF
-        const arrayBuffer = await file.arrayBuffer();
-        const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+      for (const file of files) {
+        let extractedText = "";
 
-        for (let i = 1; i <= pdf.numPages; i++) {
-          const page = await pdf.getPage(i);
-          const content = await page.getTextContent();
-          extractedText +=
-            content.items.map((item) => item.str).join(" ") + "\n";
+        if (
+          file.type ===
+          "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        ) {
+          const arrayBuffer = await file.arrayBuffer();
+          const result = await mammoth.extractRawText({ arrayBuffer });
+          extractedText = result.value.trim();
+        } else if (file.type === "application/pdf") {
+          const arrayBuffer = await file.arrayBuffer();
+          const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+
+          for (let i = 1; i <= pdf.numPages; i++) {
+            const page = await pdf.getPage(i);
+            const content = await page.getTextContent();
+            extractedText +=
+              content.items.map((item) => item.str).join(" ") + "\n";
+          }
+        } else {
+          throw new Error(
+            "Unsupported file type. Please upload a PDF or DOCX."
+          );
         }
-      } else {
-        throw new Error("Unsupported file type. Please upload a PDF or DOCX.");
+
+        const res = await fetch("/api/extractDates", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ syllabusText: extractedText }),
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          allExtractedEvents.push(...data); // Merge into one mega list
+        } else {
+          throw new Error(data.error || "Failed to extract events");
+        }
       }
 
-      const res = await fetch("/api/extractDates", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ syllabusText: extractedText }),
-      });
-
-      const data = await res.json();
-
-      if (res.ok) {
-        onEventsExtracted(data); // pass events to parent component
-      } else {
-        throw new Error(data.error || "Failed to extract events");
-      }
+      allExtractedEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
+      onEventsExtracted(allExtractedEvents); // Send all events to parent
     } catch (err) {
       setErrorMessage(err.message);
     } finally {
@@ -67,7 +74,7 @@ const UploadSyllabi = ({ onEventsExtracted }) => {
     <div className="flex flex-col items-center">
       <button
         onClick={() => fileInputRef.current.click()}
-        className="bg-indigo-600 hover:bg-indigo-800 text-white font-bold py-2 px-4 rounded"
+        className="bg-primary text-white font-bold py-2 px-4 rounded"
         disabled={isLoading}
       >
         {isLoading ? "Extracting..." : "Upload Syllabus (PDF/DOCX)"}
@@ -78,8 +85,9 @@ const UploadSyllabi = ({ onEventsExtracted }) => {
         onChange={handleFileChange}
         className="hidden"
         accept=".docx,.pdf"
+        multiple
       />
-      {errorMessage && <p className="text-red-600 mt-2">{errorMessage}</p>}
+      {errorMessage && <p className="text-destructive mt-2">{errorMessage}</p>}
     </div>
   );
 };
