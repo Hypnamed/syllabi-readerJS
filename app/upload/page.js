@@ -1,10 +1,10 @@
 "use client";
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 import UploadSyllabi from "@/components/UploadSyllabi";
 import EventEditor from "@/components/EventEditor";
 import MiniCalendar from "@/components/MiniCalendar";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 
 export default function HomePage() {
   const [events, setEvents] = useState([]);
@@ -30,7 +30,7 @@ export default function HomePage() {
   return (
     <main className="flex flex-col min-h-screen">
       <header>
-        <h1 className="flex justify-self-center text-4xl font-bold my-10">
+        <h1 className="text-center text-4xl font-bold my-10">
           <Link href="/">Syllabi-Reader</Link>
         </h1>
       </header>
@@ -54,14 +54,14 @@ export default function HomePage() {
         </div>
         <div className="flex justify-center text-2xl mt-auto mb-10">
           Made with ❤️ by{" "}
-          <a
+          <Link
             href="https://ilkeeren.dev"
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-500 hover:underline ml-1"
           >
             Eren
-          </a>{" "}
+          </Link>{" "}
         </div>
       </footer>
     </main>
