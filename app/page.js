@@ -9,7 +9,7 @@ export default async function Home() {
           <Link href="/">Syllabi-Reader</Link>
         </h1>
       </header>
-      <section className="flex-grow">
+      <section className="flex flex-col items-center justify-center flex-grow">
         <h2 className="text-center text-2xl lg:text-3xl font-bold my-10">
           Simplifying Your Academic Life
         </h2>
