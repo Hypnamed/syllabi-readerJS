@@ -20,7 +20,7 @@ export default async function Home() {
           missing deadlines or important events. Just upload your syllabi, and
           Syllabi-Reader will do the rest. It&apos;s that simple!
         </p>
-        <Button className="flex justify-self-center my-10 h-16 w-60 text-xl">
+        <Button className="mx-auto my-10 h-16 w-60 text-xl">
           <Link href="/upload">Upload your syllabus</Link>
         </Button>
         <h2 className="text-center text-3xl font-bold my-10">Strech Goals</h2>
