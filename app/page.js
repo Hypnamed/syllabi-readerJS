@@ -43,7 +43,8 @@ export default async function Home() {
             className="text-blue-500 hover:underline ml-1"
           >
             Eren
-          </Link>{" "}
+          </Link>
+          {" & "}
           <Link
             href="https://www.linkedin.com/in/hassan-syed/"
             target="_blank"
