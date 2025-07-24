@@ -44,6 +44,14 @@ export default async function Home() {
           >
             Eren
           </Link>{" "}
+          <Link
+            href="https://www.linkedin.com/in/hassan-syed/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 hover:underline ml-1"
+          >
+            Hassan
+          </Link>
         </div>
       </footer>
     </main>
