@@ -1,0 +1,37 @@
+{
+  "Homepage": {
+    "title": "让学习生活更简单",
+    "description": "为找重要日期而在课程大纲里反复翻找？Syllabi-Reader 来帮你！它会从课程大纲中提取关键日期，并汇总到一个日历里。再也不会错过截止日期或重要活动。把课程大纲上传，其余交给 Syllabi-Reader，就这么简单！",
+    "button": "上传课程大纲",
+    "goals": "后续目标",
+    "features": "我们正在开发更多功能，让你的学习更省心：自动日历同步、提醒、以及登录系统以保存并更新课程大纲。同时也在提升日期提取的准确性与稳定性。敬请期待！",
+    "footer": "由 ❤️ 驱动，作者："
+  },
+  "UploadPage": {
+    "button": "上传课程大纲",
+    "return": "返回首页",
+    "footer": "由 ❤️ 驱动，作者："
+  },
+  "UploadComponent": {
+    "unsupported": "不支持的文件类型。请上传 PDF 或 DOCX。",
+    "failedToExtract": "无法从上传的文件中提取文本。",
+    "button": "上传课程大纲（PDF/DOCX）",
+    "extracting": "正在提取…"
+  },
+  "EventEditor": {
+    "title": "事件查看与编辑",
+    "new": "新建事件",
+    "delete": "删除事件",
+    "description": "描述（可选）",
+    "addNew": "+ 添加事件",
+    "download": "下载日历 (.ics)"
+  },
+  "MiniCalendar": {
+    "events": "事件：",
+    "noDescription": "无描述"
+  },
+  "NotFound": {
+    "title": "你访问的页面不存在。",
+    "return": "返回首页"
+  }
+}

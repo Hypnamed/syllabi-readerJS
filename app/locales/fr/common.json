@@ -1,0 +1,37 @@
+{
+  "Homepage": {
+    "title": "Simplifie ta vie étudiante",
+    "description": "Marre de fouiller des plans de cours sans fin pour trouver les dates importantes ? Syllabi-Reader est là ! Il extrait les dates clés de tes plans de cours et les réunit dans un seul calendrier. Fini les échéances manquées. Téléverse ton plan de cours et Syllabi-Reader s’occupe du reste. Simple !",
+    "button": "Téléverser ton plan de cours",
+    "goals": "Objectifs supplémentaires",
+    "features": "Je travaille sur de nouvelles fonctionnalités pour te faciliter encore plus la vie : synchronisation automatique avec le calendrier, rappels, et un système d’authentification pour enregistrer tes plans de cours et remplacer les versions obsolètes. J’améliore aussi l’extraction des dates pour plus de précision et de fiabilité. Reste à l’affût !",
+    "footer": "Fait avec ❤️ par"
+  },
+  "UploadPage": {
+    "button": "Téléverser ton plan de cours",
+    "return": "Retour à l’accueil",
+    "footer": "Fait avec ❤️ par"
+  },
+  "UploadComponent": {
+    "unsupported": "Type de fichier non pris en charge. Merci d’envoyer un PDF ou un DOCX.",
+    "failedToExtract": "Impossible d’extraire le texte du fichier envoyé.",
+    "button": "Téléverser un plan de cours (PDF/DOCX)",
+    "extracting": "Extraction en cours…"
+  },
+  "EventEditor": {
+    "title": "Revoir & modifier les événements",
+    "new": "Nouvel événement",
+    "delete": "Supprimer l’événement",
+    "description": "Description (optionnelle)",
+    "addNew": "+ Ajouter un événement",
+    "download": "Télécharger le calendrier (.ics)"
+  },
+  "MiniCalendar": {
+    "events": "Événements :",
+    "noDescription": "Aucune description"
+  },
+  "NotFound": {
+    "title": "La page que tu cherches n’existe pas.",
+    "return": "Retour à l’accueil"
+  }
+}
