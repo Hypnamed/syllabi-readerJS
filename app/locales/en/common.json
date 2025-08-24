@@ -1,0 +1,18 @@
+{
+  "Homepage": { "title": "Simplifying Your Academic Life", 
+    "description": "Are you tired of sifting through endless syllabi to find important dates? Syllabi-Reader is here to help! Syllabi-Reader extracts key dates from your syllabi and compiles them into a one calendar. No more missing deadlines or important events. Just upload your syllabi, and Syllabi-Reader will do the rest. It's that simple!",
+    "button": "Upload your syllabus",
+    "goals": "Stretch Goals",
+    "features": "I'm working on adding more features to make your academic life even easier. Features like automatic calendar syncing, reminders, and an authentication system to save your syllabi so you can overwrite outdated syllabi and keep track of your classes. I'm also working on improving the date extraction process to make it more accurate and reliable. Stay tuned for more updates!",
+    "footer": "Made with ❤️ by" },
+  "UploadPage": { "button": "Upload your syllabus", "return": "Return to homepage", "footer": "Made with ❤️ by"},
+  "UploadComponent": { "unsupported": "Unsupported file type. Please upload a PDF or DOCX.",
+    "failedToExtract": "Failed to extract text from the uploaded file.",
+    "button": "Upload Syllabus (PDF/DOCX)",
+    "extracting": "Extracting..."},
+  "EventEditor": { "title": "Review & Edit Events", "new": "New Event", "delete": "Delete Event", 
+    "description": "Description (optional)",
+    "addNew": "+ Add New Event", "download": "Download Calendar (.ics)" },
+  "MiniCalendar": { "events": "Events on", "noDescription": "No Description" },
+  "NotFound": { "title": "The page you are looking for doesn't exist.", "return": "Return to homepage" }
+}

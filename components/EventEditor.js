@@ -1,7 +1,9 @@
 "use client";
+import { useTranslations } from "next-intl";
 import { useState, useEffect } from "react";
 
 const EventEditor = ({ events, onUpdate, onDownload }) => {
+  const t = useTranslations("EventEditor");
   const [editedEvents, setEditedEvents] = useState(events);
 
   useEffect(() => {
@@ -24,7 +26,7 @@ const EventEditor = ({ events, onUpdate, onDownload }) => {
 
   const handleAdd = () => {
     const newEvent = {
-      title: "New Event",
+      title: t("new"),
       date: "2025-01-01",
       description: "",
     };
@@ -35,9 +37,7 @@ const EventEditor = ({ events, onUpdate, onDownload }) => {
 
   return (
     <div className="mt-6 w-full max-w-2xl mx-auto">
-      <h2 className="text-xl font-semibold mb-4 text-center">
-        Review & Edit Events
-      </h2>
+      <h2 className="text-xl font-semibold mb-4 text-center">{t("title")}</h2>
       <div className="space-y-4">
         {editedEvents.map((event, index) => (
           <div
@@ -65,12 +65,12 @@ const EventEditor = ({ events, onUpdate, onDownload }) => {
               onChange={(e) =>
                 handleChange(index, "description", e.target.value)
               }
-              placeholder="Description (optional)"
+              placeholder={t("description")}
             />
             <button
               onClick={() => handleDelete(index)}
               className="absolute top-2 right-2 text-red-500 hover:text-red-700 text-sm"
-              title="Delete Event"
+              title={t("delete")}
             >
               🗑
             </button>
@@ -83,14 +83,14 @@ const EventEditor = ({ events, onUpdate, onDownload }) => {
           onClick={handleAdd}
           className="bg-green-600 hover:bg-green-800 text-white font-bold py-2 px-4 rounded"
         >
-          + Add New Event
+          {t("addNew")}
         </button>
 
         <button
           onClick={() => onDownload(editedEvents)}
           className="bg-purple-600 hover:bg-purple-800 text-white font-bold py-2 px-4 rounded"
         >
-          Download Calendar (.ics)
+          {t("download")}
         </button>
       </div>
     </div>

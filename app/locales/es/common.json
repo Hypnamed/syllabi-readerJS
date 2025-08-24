@@ -1,0 +1,37 @@
+{
+  "Homepage": {
+    "title": "Simplificando tu vida académica",
+    "description": "¿Estás cansado de revisar interminables programas de estudios para encontrar fechas importantes? ¡Syllabi-Reader está aquí para ayudarte! Syllabi-Reader extrae las fechas clave de tus programas y las compila en un solo calendario. No más plazos perdidos ni eventos importantes olvidados. Solo sube tu programa de estudios y Syllabi-Reader hará el resto. ¡Así de simple!",
+    "button": "Sube tu programa",
+    "goals": "Metas adicionales",
+    "features": "Estoy trabajando en añadir más funciones para hacer tu vida académica aún más fácil. Funciones como sincronización automática con el calendario, recordatorios y un sistema de autenticación para guardar tus programas, de modo que puedas sobrescribir programas desactualizados y llevar el control de tus clases. También estoy mejorando el proceso de extracción de fechas para hacerlo más preciso y confiable. ¡Mantente al tanto para más actualizaciones!",
+    "footer": "Hecho con ❤️ por"
+  },
+  "UploadPage": {
+    "button": "Sube tu programa",
+    "return": "Volver a inicio",
+    "footer": "Hecho con ❤️ por"
+  },
+  "UploadComponent": {
+    "unsupported": "Tipo de archivo no soportado. Por favor sube un PDF o DOCX.",
+    "failedToExtract": "No se pudo extraer el texto del archivo subido.",
+    "button": "Subir programa (PDF/DOCX)",
+    "extracting": "Extrayendo..."
+  },
+  "EventEditor": {
+    "title": "Revisar y editar eventos",
+    "new": "Nuevo evento",
+    "delete": "Eliminar evento",
+    "description": "Descripción (opcional)",
+    "addNew": "+ Agregar nuevo evento",
+    "download": "Descargar calendario (.ics)"
+  },
+  "MiniCalendar": {
+    "events": "Eventos en",
+    "noDescription": "Sin descripción"
+  },
+  "NotFound": {
+    "title": "La página que buscas no existe.",
+    "return": "Volver a inicio"
+  }
+}

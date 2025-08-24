@@ -24,6 +24,7 @@
     "mongodb": "^6.15.0",
     "mongoose": "^8.13.1",
     "next": "15.2.2",
+    "next-intl": "^4.3.5",
     "openai": "^4.98.0",
     "pdf-parse": "^1.1.1",
     "pdfjs-dist": "^4.10.38",

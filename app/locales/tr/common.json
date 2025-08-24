@@ -1,0 +1,37 @@
+{
+  "Homepage": {
+    "title": "Akademik hayatını kolaylaştır",
+    "description": "Önemli tarihleri bulmak için sayfalarca ders programı arasında kaybolmaktan bıktın mı? Syllabi-Reader yardımına koşuyor! Syllabi-Reader, ders programlarındaki önemli tarihleri çıkarır ve hepsini tek bir takvimde toplar. Artık son tarihleri ya da önemli etkinlikleri kaçırmak yok. Sadece programını yükle, gerisini Syllabi-Reader halletsin. Bu kadar basit!",
+    "button": "Programını yükle",
+    "goals": "Ekstra hedefler",
+    "features": "Akademik hayatını daha da kolaylaştırmak için yeni özellikler eklemeye çalışıyorum. Otomatik takvim senkronizasyonu, hatırlatıcılar ve ders programlarını kaydedip güncelleyebileceğin bir giriş sistemi gibi. Ayrıca tarih çıkarma sürecini daha doğru ve güvenilir hale getirmek için çalışıyorum. Daha fazla güncelleme için takipte kal!",
+    "footer": "❤️ ile yapıldı, yapan:"
+  },
+  "UploadPage": {
+    "button": "Programını yükle",
+    "return": "Ana sayfaya dön",
+    "footer": "❤️ ile yapıldı, yapan:"
+  },
+  "UploadComponent": {
+    "unsupported": "Desteklenmeyen dosya türü. Lütfen PDF veya DOCX yükleyin.",
+    "failedToExtract": "Yüklenen dosyadan metin çıkarılamadı.",
+    "button": "Program yükle (PDF/DOCX)",
+    "extracting": "Çıkarılıyor..."
+  },
+  "EventEditor": {
+    "title": "Etkinlikleri gözden geçir & düzenle",
+    "new": "Yeni etkinlik",
+    "delete": "Etkinliği sil",
+    "description": "Açıklama (opsiyonel)",
+    "addNew": "+ Yeni etkinlik ekle",
+    "download": "Takvimi indir (.ics)"
+  },
+  "MiniCalendar": {
+    "events": "Etkinlikler:",
+    "noDescription": "Açıklama yok"
+  },
+  "NotFound": {
+    "title": "Aradığınız sayfa bulunamadı.",
+    "return": "Ana sayfaya dön"
+  }
+}

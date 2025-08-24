@@ -1,11 +1,13 @@
 "use client";
 import { useState, useRef } from "react";
+import { useTranslations } from "next-intl";
 import * as pdfjsLib from "pdfjs-dist";
 import mammoth from "mammoth";
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = "/pdf.worker.mjs";
 
 const UploadSyllabi = ({ onEventsExtracted }) => {
+  const t = useTranslations("UploadComponent");
   const fileInputRef = useRef(null);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -41,9 +43,7 @@ const UploadSyllabi = ({ onEventsExtracted }) => {
               content.items.map((item) => item.str).join(" ") + "\n";
           }
         } else {
-          throw new Error(
-            "Unsupported file type. Please upload a PDF or DOCX."
-          );
+          throw new Error(t("unsupported"));
         }
 
         const res = await fetch("/api/extractDates", {
@@ -57,7 +57,7 @@ const UploadSyllabi = ({ onEventsExtracted }) => {
         if (res.ok) {
           allExtractedEvents.push(...data); // Merge into one mega list
         } else {
-          throw new Error(data.error || "Failed to extract events");
+          throw new Error(data.error || t("failedToExtract"));
         }
       }
 
@@ -77,7 +77,7 @@ const UploadSyllabi = ({ onEventsExtracted }) => {
         className="bg-primary text-white font-bold py-2 px-4 rounded"
         disabled={isLoading}
       >
-        {isLoading ? "Extracting..." : "Upload Syllabus (PDF/DOCX)"}
+        {isLoading ? t("extracting") : t("button")}
       </button>
       <input
         type="file"
